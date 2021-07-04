@@ -1,0 +1,49 @@
+<button nbButton (click)="createItemButtonClick()">
+    Create item
+</button>
+
+<nb-card>
+    <nb-card-header>Item list (cart: {{ cart?.id }})</nb-card-header>
+    <nb-card-body>
+        <table class="item-list-table">
+            <thead>
+                <tr>
+                    <td>Action</td>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Description</td>
+                    <td>Price</td>
+                    <td>SKU</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items">
+                    <td>
+                        <button nbButton size="small" (click)="editItemButtonClick(item.id)">
+                            Edit
+                        </button> 
+
+                        <button nbButton size="small" (click)="deleteItemButtonClick(item.id)">
+                            Delete
+                        </button>             
+                    </td>
+                    <td>
+                        {{ item.id }}
+                    </td>
+                    <td>
+                        {{ item.name }}
+                    </td>
+                    <td>
+                        {{ item.description }}
+                    </td>
+                    <td>
+                        {{ item.price }}
+                    </td>
+                    <td>
+                        {{ item.sku }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </nb-card-body>
+</nb-card>

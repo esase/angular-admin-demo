@@ -1,0 +1,35 @@
+<button nbButton (click)="createCartButtonClick()">
+    Create cart
+</button>
+
+<nb-card>
+    <nb-card-header>Cart list</nb-card-header>
+    <nb-card-body>
+        <table class="cart-list-table">
+            <thead>
+                <tr>
+                    <td>Action</td>
+                    <td>Id</td>
+                    <td>UserId</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cart of carts">
+                    <td>
+                        <button nbButton size="small" (click)="deleteCartButtonClick(cart.id)">
+                            Delete
+                        </button>             
+                    </td>
+                    <td>
+                        <a [routerLink]="[cart.id, 'items']">
+                            {{ cart.id }}
+                        </a>
+                    </td>
+                    <td>{{ cart.userId }}</td>
+                    <td>{{ cart.total }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </nb-card-body>
+</nb-card>

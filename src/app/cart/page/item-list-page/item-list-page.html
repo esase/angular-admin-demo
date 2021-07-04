@@ -1,0 +1,31 @@
+<div *ngIf="itemList$ | async as itemList; else loading">
+    <app-item-list 
+        [cart]="cart"
+        [items]="itemList" 
+        (createItemButtonClickEvent)="showCreationFormDialog(formDialog)"
+        (editItemButtonClickEvent)="showEditFormDialog($event, formDialog)"
+        (deleteItemButtonClickEvent)="showConfirmationDialog($event, dialog)">
+    </app-item-list>
+</div>
+
+<ng-template #loading>
+    <app-loading></app-loading>
+</ng-template>  
+
+<ng-template #dialog let-data let-ref="dialogRef">
+    <app-confirmation 
+        title="Are you sure want to delete the item?"
+        [data]="data"
+        (yesButtonClickEvent)="ref.close(); deleteItem($event)"
+        (noButtonClickEvent)="ref.close()">
+    </app-confirmation>
+</ng-template>
+
+<ng-template #formDialog let-data let-ref="dialogRef">
+    <app-item-form
+        [item]="data"
+        [submitTitle]="data ? 'Edit' : 'Create'"
+        (submitEvent)="ref.close(); data ? editItem(data.id, $event) : createItem($event)"
+        (cancelButtonClickEvent)="ref.close()">
+    </app-item-form>
+</ng-template>

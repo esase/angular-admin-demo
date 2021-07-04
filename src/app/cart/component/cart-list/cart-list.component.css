@@ -1,0 +1,7 @@
+table.cart-list-table {
+    width: 100%;
+}
+
+table.cart-list-table thead td{
+    font-weight: bold;
+}

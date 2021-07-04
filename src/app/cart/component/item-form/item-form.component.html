@@ -1,0 +1,62 @@
+<form #itemForm="ngForm" (ngSubmit)="submit(itemForm.form);">
+    <nb-card>
+        <nb-card-header>Item info</nb-card-header>
+        <nb-card-body class="example-items-col">
+            <input 
+                type="text" 
+                required 
+                name="name" 
+                [ngModel]="item?.name"
+                #nameField="ngModel" 
+                nbInput 
+                fullWidth 
+                placeholder="Name">
+
+            <br />
+            <br />
+
+            <textarea 
+               required 
+                name="description" 
+                [ngModel]="item?.description"
+                #nameField="ngModel" 
+                nbInput 
+                fullWidth 
+                placeholder="description">
+            </textarea>
+
+            <br />
+            <br />
+ 
+            <input 
+                type="number" 
+                required 
+                name="price" 
+                [ngModel]="item?.price" 
+                #nameField="ngModel" 
+                nbInput 
+                fullWidth 
+                placeholder="Price">
+
+            <br />
+            <br />
+
+            <input 
+                type="text" 
+                required 
+                name="sku" 
+                [ngModel]="item?.sku"  
+                #nameField="ngModel" 
+                nbInput 
+                fullWidth 
+                placeholder="SKU">
+
+        </nb-card-body>
+        <nb-card-footer>
+            <button nbButton type="submit" [disabled]="!itemForm.valid">
+                {{ submitTitle }}
+            </button>
+            <button nbButton (click)="cancelClick()">Cancel</button>
+        </nb-card-footer>
+    </nb-card>
+</form>

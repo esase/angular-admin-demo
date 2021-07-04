@@ -1,0 +1,7 @@
+table.item-list-table {
+    width: 100%;
+}
+
+table.item-list-table thead td{
+    font-weight: bold;
+}

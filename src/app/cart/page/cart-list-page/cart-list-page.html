@@ -1,0 +1,20 @@
+<div *ngIf="cartList$ | async as cartList; else loading">
+    <app-cart-list 
+        [carts]="cartList" 
+        (createCartButtonClickEvent)="createCart()"
+        (deleteCartButtonClickEvent)="showConfirmationDialog($event, dialog)">
+    </app-cart-list>
+</div>
+
+<ng-template #loading>
+    <app-loading></app-loading>
+</ng-template>  
+
+<ng-template #dialog let-data let-ref="dialogRef">
+    <app-confirmation 
+        title="Are you sure want to delete the cart?"
+        [data]="data"
+        (yesButtonClickEvent)="ref.close(); deleteCart($event)"
+        (noButtonClickEvent)="ref.close()">
+    </app-confirmation>
+</ng-template>
